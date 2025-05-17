@@ -135,7 +135,7 @@ Here's a summary of key areas:
 ### For Users (Using the SaaS Platform)
 
 Our official SaaS platform is under active development.
-*   **Sign up for early access and updates:** [Link to your landing page, e.g., https://printifycheck.com]
+*   **Sign up for early access and updates:** [Link to your landing page, e.g., https://suryacodelabs.com/printify-check]
 *   Once launched, you'll be able to create an account, upload PDFs, select preflight profiles, and view results directly in your browser.
 
 ### For Developers (Contributing or Self-Hosting)
