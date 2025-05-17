@@ -1,0 +1,180 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.5</version>
+        <relativePath/>
+    </parent>
+    <groupId>com.printifycheck</groupId>
+    <artifactId>printify-check-backend</artifactId>
+    <version>0.1.0</version>
+    <name>Printify Check Backend</name>
+    <description>PDF Preflight and Correction SaaS Backend</description>
+
+    <properties>
+        <java.version>24</java.version>
+        <itext.version>9.1.0</itext.version>
+        <itext.pdfocr.version>4.0.1</itext.pdfocr.version>
+        <verapdf.version>1.28.1</verapdf.version>
+        <mupdf.version>1.26.0</mupdf.version>
+    </properties>
+
+    <dependencies>
+        <!-- Spring Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        
+        <!-- PostgreSQL & JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- iText Core -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext-core</artifactId>
+            <version>${itext.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>kernel</artifactId>
+            <version>${itext.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>pdfa</artifactId>
+            <version>${itext.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>svg</artifactId>
+            <version>${itext.version}</version>
+        </dependency>
+
+        <!-- iText PDF OCR -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext-pdfocr-java</artifactId>
+            <version>${itext.pdfocr.version}</version>
+        </dependency>
+
+        <!-- iText PDF Sweep (Redaction) -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext-pdfsweep-java</artifactId>
+            <version>${itext.version}</version>
+        </dependency>
+
+        <!-- VeraPDF Libraries -->
+        <dependency>
+            <groupId>org.verapdf</groupId>
+            <artifactId>validation-model</artifactId>
+            <version>${verapdf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.verapdf</groupId>
+            <artifactId>core</artifactId>
+            <version>${verapdf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.verapdf</groupId>
+            <artifactId>feature-reporting</artifactId>
+            <version>${verapdf.version}</version>
+        </dependency>
+
+        <!-- Ghostscript Java Bindings -->
+        <dependency>
+            <groupId>com.ghostscript</groupId>
+            <artifactId>gsjava</artifactId>
+            <version>10.05.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/gsjava.jar</systemPath>
+        </dependency>
+
+        <!-- MuPDF Java Bindings -->
+        <dependency>
+            <groupId>com.artifex</groupId>
+            <artifactId>mupdf</artifactId>
+            <version>${mupdf.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/mupdf-java-${mupdf.version}.jar</systemPath>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Jackson for JSON -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <!-- VeraPDF Maven Repository -->
+        <repository>
+            <id>vera-dev</id>
+            <name>Vera PDF Release Repository</name>
+            <url>https://artifactory.openpreservation.org/artifactory/vera-dev</url>
+        </repository>
+        <!-- MuPDF Repository -->
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
